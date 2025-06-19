@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopSmart - E-commerce</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="logo">🛍️ ShopSmart</div>
+
+    <div class="search-box">
+      <!-- <span class="search-icon" onclick="toggleSearch()">🔍</span> -->
+      <input type="text" id="search-bar" placeholder="Search for products..." oninput="searchProducts()">
+    </div>
+
+    <div class="nav-right">
+      <span class="cart-icon" onclick="openCartPage()">🛒<span id="cart-count">0</span></span>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h2>Welcome to ShopSmart!</h2>
+    <p>Your one-stop shop for all things awesome.</p>
+  </div>
+
+  <main>
+    <aside>
+      <h3>Categories</h3>
+      <ul>
+        <li onclick="filterCategory('All')">All</li>
+        <li onclick="filterCategory('Electronics')">Electronics</li>
+        <li onclick="filterCategory('Accessories')">Accessories</li>
+      </ul>
+    </aside>
+
+    <section class="product-container" id="product-container">
+      <!-- Products will be injected here -->
+    </section>
+  </main>
+
+  <section class="admin-form-container">
+    <h2>Add New Product (Admin)</h2>
+    <div class="admin-form">
+      <input type="text" id="new-name" placeholder="Product Name" />
+      <input type="text" id="new-price" placeholder="Price" />
+      <input type="text" id="new-image" placeholder="Image URL" />
+      <input type="text" id="new-category" placeholder="Category" />
+      <button onclick="addNewProduct(
+      document.getElementById('new-name').value,
+      parseFloat(document.getElementById('new-price').value),
+      document.getElementById('new-image').value,
+      document.getElementById('new-category').value
+    )">➕ Add Product</button>
+    </div>
+  </section>
+
+
+  <div id="toast"></div>
+
+  <footer>
+    <p>&copy; 2025 ShopSmart | Designed with 💚 by Lalit</p>
+    <p>Follow us: Instagram | Twitter | Facebook</p>
+  </footer>
+
+  <script>
+    let products = [
+      { id: 1, name: "Smartphone", price: 699, image: "/images/phone.webp", category: "Electronics"},
+      { id: 2, name: "Laptop", price: 999, image: "/images/laptop.webp", category: "Electronics" },
+      { id: 3, name: "Headphones", price: 199, image: "/images/headphone.webp", category: "Accessories" },
+      { id: 4, name: "Speaker", price: 899, image: "/images/speaker.webp", category: "Accessories" }
+    ];
+
+    const cart = [];
+
+    function renderProducts(filtered = products) {
+      const container = document.getElementById("product-container");
+      container.innerHTML = '';
+      filtered.forEach(product => {
+        const div = document.createElement("div");
+        div.className = "product";
+        div.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" />
+          <h3>${product.name}</h3>
+          <p>$${product.price}</p>
+          <button onclick='addToCart(${JSON.stringify(product)})'>Add to Cart</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function addToCart(product) {
+      cart.push(product);
+      document.getElementById("cart-count").textContent = cart.length;
+      showToast(`${product.name} added to cart!`);
+    }
+
+    function showCart() {
+      window.location.href = "cart.html";
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      document.getElementById("cart-count").textContent = cart.length;
+      showCart();
+    }
+
+    function filterCategory(category) {
+      if (category === 'All') {
+        renderProducts(products);
+      } else {
+        const filtered = products.filter(p => p.category === category);
+        renderProducts(filtered);
+      }
+    }
+
+    function searchProducts() {
+      const query = document.getElementById("search-bar").value.toLowerCase();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+      renderProducts(filtered);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.innerText = message;
+      toast.style.display = "block";
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 2000);
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function addNewProduct(name, price, image, category) {
+      const id = products.length + 1;
+      products.push({ id, name, price, image, category });
+      renderProducts();
+      showToast(`${name} added to store!`);
+    }
+
+    function openCartPage() {
+      localStorage.setItem('cartItems', JSON.stringify(cart));
+      window.location.href = "cart.html";
+    }
+
+    renderProducts();
+  </script>
+</body>
+
+</html>

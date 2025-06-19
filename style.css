@@ -1,0 +1,407 @@
+:root {
+  --primary: #2c3e50;
+  --accent: #27ae60;
+  --light-bg: #f9f9f9;
+  --dark-bg: #121212;
+  --light-text: #fff;
+  --dark-text: #222;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+  transition: all 0.3s ease;
+}
+
+.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+}
+
+header {
+  background-color: var(--primary);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: linear-gradient(to right, #152737, #1d2f3e);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  flex: 1 1 100%;
+  text-align: center;
+}
+
+.search-box {
+  flex: 1 1 100%;
+  margin: 10px 0;
+  display: flex;
+  justify-content: right;
+}
+
+.search-box input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.nav-right {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex: 1 1 100%;
+  margin-top: 10px;
+}
+
+.cart-icon {
+  font-size: 1.6rem;
+  cursor: pointer;
+  position: relative;
+  font-weight: bold;
+}
+
+.cart-icon:hover {
+  color: #2dd838;
+}
+
+.theme-toggle {
+  background-color: white;
+  color: #3a7bd5;
+  border: none;
+  padding: 7px 7px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.theme-toggle:hover {
+  background-color: #563ebe;
+  color: white;
+  box-shadow: 0 2px 8px rgba(29, 29, 29, 0.2);
+}
+
+/* HERO SECTION */
+.hero {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  padding: 20px 15px;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+aside {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+aside ul {
+  list-style: none;
+  padding: 0;
+}
+
+aside li {
+  cursor: pointer;
+  margin: 10px 0;
+  color: var(--accent);
+}
+
+/* PRODUCT GRID */
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  flex: 1;
+  width: 100%;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: white;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.product:hover {
+  transform: scale(1.02);
+}
+
+.product img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product button {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: var(--accent);
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* CART */
+.cart {
+  background-color: #ecf0f1;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--primary);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* TOAST */
+#toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--accent);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  display: none;
+}
+
+/* ADMIN FORM */
+.admin-form-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.admin-form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #232f3e;
+}
+
+.admin-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.admin-form input {
+  flex: 1 1 220px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.admin-form input:focus {
+  border-color: #febd69;
+  outline: none;
+}
+
+.admin-form button {
+  padding: 12px 24px;
+  background-color: #febd69;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  color: #111;
+  transition: background-color 0.3s ease;
+}
+
+.admin-form button:hover {
+  background-color: #f3a847;
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (min-width: 768px) and (max-width: 1440px){
+  .logo {
+    flex: unset;
+    text-align: left;
+  }
+
+  .search-box,
+  .nav-right {
+    flex: unset;
+    margin-top: 0;
+  }
+
+  main {
+    flex-wrap: nowrap;
+  }
+
+  aside {
+    width: 200px;
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  .admin-form input {
+    flex: 1 1 300px;
+  }
+}
+@media (min-width: 361px) and (max-width: 767px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    text-align: center;
+    flex: 1 1 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-box {
+    flex: 1 1 100%;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  .nav-right {
+    flex: 1 1 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  aside {
+    width: 100%;
+    text-align: center;
+  }
+
+  .product-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .cart {
+    padding: 15px;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    padding: 15px;
+  }
+}
+@media (max-width: 360px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    text-align: center;
+    flex: 1 1 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-box {
+    flex: 1 1 100%;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  .search-box input {
+    max-width: 90%;
+    font-size: 0.9rem;
+  }
+
+  .nav-right {
+    flex: 1 1 100%;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .hero {
+    font-size: 1.2rem;
+    padding: 15px;
+  }
+
+  main {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  aside {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .product-container {
+    grid-template-columns: 1fr;
+  }
+
+  .cart {
+    padding: 12px;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 12px;
+  }
+
+  .admin-form-container {
+    padding: 20px;
+  }
+
+  .admin-form input {
+    flex: 1 1 100%;
+  }
+
+  .admin-form button {
+    width: 100%;
+  }
+}
+
