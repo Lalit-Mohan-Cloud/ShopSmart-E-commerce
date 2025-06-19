@@ -11,10 +11,10 @@ ShopSmart is a fully responsive, visually appealing e-commerce website built usi
    - 🎨 Clean, modern UI with soft colors and animations
 
 ## 📸 Screenshots
-✅ Home Page
+### ✅ Home Page
 ![image alt](https://github.com/Lalit-Mohan-Cloud/ShopSmart-E-commerce/blob/main/images/Screenshot%202025-06-19%20220735.png?raw=true)
 
-✅ Cart Page
+### ✅ Cart Page
 ![image alt](https://github.com/Lalit-Mohan-Cloud/ShopSmart-E-commerce/blob/main/images/Screenshot%202025-06-19%20224957.png?raw=true)
 
 ## 🚀 How to Run
